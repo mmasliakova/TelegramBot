@@ -7,7 +7,7 @@ import os
 
 
 bot = telebot.TeleBot("TOKEN") #создаем переменную для записи бота
-parser = argparse.ArgumentParser()
+parser = argparse.ArgumentParser() #интерфейс командной строки при помощи argparse
 parser.add_argument('--pictures_path', type=str,
                     help='Путь к папке с картинками', default='pics/') #путь к папке с картинками
 args = parser.parse_args()
@@ -32,3 +32,4 @@ def echo_all(message):
 
 
 bot.polling()
+
