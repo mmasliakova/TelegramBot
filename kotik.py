@@ -8,7 +8,8 @@ import os
 
 bot = telebot.TeleBot("TOKEN") #создаем переменную для записи бота
 parser = argparse.ArgumentParser()
-parser.add_argument('--pictures_path', type=str, help='Путь к папке с картинками', default='pics/') #путь к папке с картинками
+parser.add_argument('--pictures_path', type=str,
+                    help='Путь к папке с картинками', default='pics/') #путь к папке с картинками
 args = parser.parse_args()
 picture_files = os.listdir(args.pictures_path) #для работы с картинками
 picture_files = [os.path.join(args.pictures_path, i) for i in picture_files]
