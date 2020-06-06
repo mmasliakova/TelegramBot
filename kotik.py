@@ -6,7 +6,7 @@ from random import randrange
 import os
 
 
-bot = telebot.TeleBot("TOKEN") #создаем переменную для записи бота
+bot = telebot.TeleBot("1145880562:AAFvfDIwCdjGEmJPizW6f7fPbfPLVheD6n8") #создаем переменную для записи бота
 parser = argparse.ArgumentParser() #интерфейс командной строки при помощи argparse
 parser.add_argument('--pictures_path', type=str,
                     help='Путь к папке с картинками', default='pics/') #путь к папке с картинками
