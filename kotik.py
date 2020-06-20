@@ -1,35 +1,41 @@
-import telebot #преамбула - импортируем нужные библиотеки 
+import telebot  #преамбула - импортируем нужные библиотеки
 from telebot import types
 import argparse
 from random import randrange
 
 import os
 
-
-bot = telebot.TeleBot("1145880562:AAFvfDIwCdjGEmJPizW6f7fPbfPLVheD6n8") #создаем переменную для записи бота
-parser = argparse.ArgumentParser() #интерфейс командной строки при помощи argparse
+#создаем переменную для записи бота
+bot = telebot.TeleBot("1145880562:AAFvfDIwCdjGEmJPizW6f7fPbfPLVheD6n8")
+#интерфейс командной строки при помощи argparse
+parser = argparse.ArgumentParser()
 parser.add_argument('--pictures_path', type=str,
-                    help='Путь к папке с картинками', default='pics/') #путь к папке с картинками
+                    help='Путь к папке с картинками',
+                    default='pics/')  #путь к папке с картинками
 args = parser.parse_args()
-picture_files = os.listdir(args.pictures_path) #для работы с картинками
+picture_files = os.listdir(args.pictures_path)  #для работы с картинками
 picture_files = [os.path.join(args.pictures_path, i) for i in picture_files]
 
 
-@bot.message_handler(commands=['start', 'help']) #описываем реакцию бота на команду /start
+#описываем реакцию бота на команду /start
+@bot.message_handler(commands=['start', 'help'])
 def send_welcome(message):
     chat_id = message.chat.id
     markup = types.ReplyKeyboardMarkup()
-    item = types.KeyboardButton('/Получить') #вводим кнопку 'Получить' в интерфейс бота
+    #вводим кнопку 'Получить' в интерфейс бота
+    item = types.KeyboardButton('/Получить')
     markup.row(item)
-    bot.send_message(chat_id, "Привет! Хочешь кота?", reply_markup=markup) #реакция бота на /start
+    #реакция бота на /start
+    bot.send_message(chat_id, "Привет! Хочешь кота?", reply_markup=markup)
 
 
-@bot.message_handler(commands=['Получить']) #ответ бота на наш запрос 'Получить'
+#ответ бота на наш запрос 'Получить'
+@bot.message_handler(commands=['Получить'])
 def echo_all(message):
     chat_id = message.chat.id
-    i = randrange(len(picture_files)) #выбирается рандомная картинка из папки, путь к которой написан выше
+    #выбирается рандомная картинка из папки, путь к которой написан выше
+    i = randrange(len(picture_files))
     bot.send_photo(chat_id, open(picture_files[i], 'rb'))
 
 
 bot.polling()
-
