@@ -1,5 +1,5 @@
-Задание 50 - TelegramBot с котиками
+TelegramBot with cats
 
-Для использования бота установлена библиотека pytelegrambotapi
+The "pytelegrambotapi" library should be installed to use the bot.
 
-Найти бот в телеграме можно по названию "Котофото", нажав на \Получить - бот выдаст картинку с котиком.
+You can find the bot in Telegram messenger by the name "Котофото", and by clicking on \Get - the bot will give you a picture of a cat.
